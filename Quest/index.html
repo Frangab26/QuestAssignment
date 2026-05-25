@@ -1,0 +1,127 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Grow a Garden Quest</title>
+    
+  </head>
+
+  <body>
+
+    <h1>Grow a Garden Quest</h1>
+
+    <p id="output"></p>
+
+    
+    <script>
+/*array*/
+   let plantsandflowers = [];
+
+   let results = [];
+
+   /* grow option */    
+
+   const plantsandFlowerOptions = [
+    "lily",
+    "carrot",
+    "tomato",
+    "mango tree",
+    "basil",
+    "bell pepper",
+    "corn",
+    "apple tree",
+    "rose",
+   ];
+
+   /* Score operation */
+
+   let gardenHealth = 100; 
+
+   /*User operation*/
+
+   let days = Number (prompt("Welcome to Grow a Garden Quest! How many days would you like to grow your garden?"));
+
+   while (isNaN(days) || days <= 0) {
+
+    days = Number ( prompt ( "enter a number greater than 0."));
+
+   };
+ for (
+    let i = 1; i <= days; i++) {  
+        
+    let plant = prompt ( "Day" + i +": Choose one seed to start growing: lily, carrot, tomato, mango tree, basil, bell pepper, corn, apple tree, rose!");
+
+
+    plantsandflowers.push(plant);
+
+    alert ("you planted: " + plant);
+
+/*Switch*/
+
+let weather = Math.floor(Math.random()*3);
+let result ="";
+
+switch (weather) {
+    case 0:
+        result ="sunshine appears! your " + plant + " grew very well.";
+        gardenHealth +=15;
+
+        break;
+
+        case 1:
+            result = "storm and wind appear! your " + plant + " gets destroyed...";
+            gardenHealth -= 25;
+
+            break;
+
+        case 2:
+            result = "rain appears! your " + plant + " is staying healthy and progressivly grows";
+            gardenHealth += 5;
+            
+            break;
+
+             default:  
+             result = "nothing happening this day.";
+
+             break;
+}
+
+alert (result);
+
+alert ("End of the Day" + i + " | Garden Health: " + gardenHealth);
+
+if (gardenHealth >= 125) {
+    result += "Your garden is strong and healthy!";
+}
+
+else if (gardenHealth >= 75) {
+    result += " Your garden is doing alright, but could be better. ";
+}
+else{
+    result += "The garden is failing to stay alive..";
+}
+
+results.push (result);
+    }
+
+let outputText = "<h2> Garden Results </h2>";
+
+for (let i = 0; i < results.length; i++) {
+    
+ outputText += "<p>Day" ( i+1) + ": "   + results [i]+ "</p>";
+    }
+        
+outputText += "<h3> Garden Health:" + gardenHealth + "</h3>";
+
+console.log(plantsandflowers);
+console.log("weather value:",weather);
+
+document.getElementById("output").innerHTML= outputText;
+ 
+  </script>  
+  
+ </body>
+</html>
